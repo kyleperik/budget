@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    background-color: #ffffff;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+h1 {
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: normal;
+    font-size: 30px;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+.header {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(152, 255, 199);
+    background-color: rgba(255,255,255,.8);
+    position: fixed;
+    top: 0; left: 0; right: 0;
+}
+.header h1 {
+    padding: 20px 30px;
+    padding-top: 10;
+}
+
+.content {
+    display: flex;
+    padding-top: 80px;
+    overflow: auto;
+}
+
+.content .form {
+    font-size: 20px;
+    display: flex;
+    flex-flow: row wrap;
+}
+.category {
+    margin: 20px 5px;
+    min-width: 300px;
+    flex-grow: 1;
+}
+.category .toprow {
+    display: flex;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(152, 255, 199);
+}
+.category .name {
+    padding: 0px 15px;
+    font-weight: bold;
+    flex-grow: 1;
+}
+.category .status {
+    margin: 5px 0;
+    font-size: 11px;
+    display: flex;
+    border-radius: 5px;
+}
+.category .status .description {
+    padding: 0 10px;
+    border: 2px solid #d0d0d0;
+    border-right-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.category .status .indicator {
+    width: 40px;
+    background-color: #00ff79;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.category .amount {
+    padding-left: 30px;
+}
