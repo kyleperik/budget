@@ -5,19 +5,24 @@ class BudgetCategory:
         self.amount = amount
 
     def serialize(self):
+        import pdb; pdb.set_trace
         return {
             'id': self.id,
             'name': self.name,
-            'amount': self.amount,
+            'amount': float(self.amount),
         }
 
 class Spending:
-    def __init__(self, description=None, day_of_month=None):
+    def __init__(self, id=None, amount=None,
+                 description=None, day_of_month=None):
+        self.amount = amount
         self.description = description
         self.day_of_month = day_of_month
 
     def serialize(self):
         return {
-            'description': self.id,
-            'day_of_month': self.name,
+            'id': self.id,
+            'amount': self.amount,
+            'description': self.day_of_month,
+            'day_of_month': self.day_of_month,
         }
