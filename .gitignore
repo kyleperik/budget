@@ -2,5 +2,4 @@ __pycache__
 config.py
 venv
 .cache
-
 *.egg-info
