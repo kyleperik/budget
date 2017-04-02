@@ -20,8 +20,9 @@ class BudgetCategory(db.Model):
     amount = db.Column(db.Float)
     timeperiodid = db.Column(db.Integer,
                              db.ForeignKey('timeperiod.id'))
-
-    timeperiod = db.relationship(Timeperiod)
+    
+    spending = db.relationship('Spending')
+    timeperiod = db.relationship('Timeperiod')
 
     def __init(self, id, name, amount, timeperiodid):
         self.id = id
@@ -34,11 +35,12 @@ class Spending(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     budget_categoryid = db.Column(db.Integer,
                                   db.ForeignKey('budget_category.id'))
+    amount = db.Column(db.Float)
     description = db.Column(db.String(300))
     day_of_month = db.Column(db.Integer)
 
-    budget_category = db.relationship(BudgetCategory)
-    def __init__(self, budget_categoryid, description, day_of_month):
+    budget_category = db.relationship('BudgetCategory')
+    def __init__(self, budget_categoryid, amount, description, day_of_month):
         self.id = id
         self.budget_categoryid = budget_categoryid
         self.description = description

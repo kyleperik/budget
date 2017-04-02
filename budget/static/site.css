@@ -47,6 +47,11 @@ h1 {
     border-bottom-style: solid;
     border-bottom-color: rgb(152, 255, 199);
 }
+.category .bottomrow {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 50px;
+}
 .category .name {
     padding: 0px 15px;
     font-weight: bold;
@@ -70,7 +75,4 @@ h1 {
     background-color: #00ff79;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-}
-.category .amount {
-    padding-left: 30px;
 }

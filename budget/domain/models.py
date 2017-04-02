@@ -1,15 +1,20 @@
 class BudgetCategory:
-    def __init__(self, id=None, name=None, amount=None):
+    def __init__(self, id=None, name=None, amount=None, spending=[]):
         self.id = id
         self.name = name
         self.amount = amount
+        self.spending = spending
+        
+    @property
+    def total_spending(self):
+        return sum(self.spending)
 
     def serialize(self):
-        import pdb; pdb.set_trace
         return {
             'id': self.id,
             'name': self.name,
             'amount': float(self.amount),
+            'total_spending': float(self.total_spending),
         }
 
 class Spending:
