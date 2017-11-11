@@ -17,7 +17,7 @@ class BudgetCategory(db.Model):
     __tablename__  = 'budget_category'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    amount = db.Column(db.Float)
+    amount = db.Column(db.Integer)
     timeperiodid = db.Column(db.Integer,
                              db.ForeignKey('timeperiod.id'))
     

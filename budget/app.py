@@ -18,17 +18,14 @@ db.init_app(app)
 
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
-def vue_template(path):
-    return open(os.path.join(SITE_ROOT, 'vues', path)).read()
-
 @app.route('/')
-def categories():
-    categories = data.budget_category.get_for(1)
+def index():
     return render_template(
         'layout.html',
-        vue = vue_template('categories.html'),
         jsfilename = 'categories.js',
-        model = {
-            'categories': [c.serialize() for c in categories],
-        }
     )
+
+@app.route('/budget/')
+def budgets():
+    categories = data.budget_category.get_for(1)
+    return jsonify([c.serialize() for c in categories])
