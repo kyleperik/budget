@@ -19,15 +19,20 @@ class BudgetCategory:
 
 class Spending:
     def __init__(self, id=None, amount=None,
-                 description=None, day_of_month=None):
+                 description=None, day_of_month=None,
+                 budget_categoryid=None):
+        self.id = id
         self.amount = amount
         self.description = description
         self.day_of_month = day_of_month
-
+        self.budget_categoryid = budget_categoryid
+        
+        
     def serialize(self):
         return {
             'id': self.id,
             'amount': self.amount,
             'description': self.day_of_month,
             'day_of_month': self.day_of_month,
+            'budget_categoryid': self.budget_categoryid,
         }

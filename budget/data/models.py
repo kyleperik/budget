@@ -40,8 +40,10 @@ class Spending(db.Model):
     day_of_month = db.Column(db.Integer)
 
     budget_category = db.relationship('BudgetCategory')
-    def __init__(self, budget_categoryid, amount, description, day_of_month):
+    def __init__(self, id=None, budget_categoryid=None, amount=None,
+                 description=None, day_of_month=None):
         self.id = id
+        self.amount = amount
         self.budget_categoryid = budget_categoryid
         self.description = description
         self.day_of_month = day_of_month

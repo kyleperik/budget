@@ -9,12 +9,16 @@
 	<link href="https://fonts.googleapis.com/css?family=Lobster|Quicksand|Titillium+Web" rel="stylesheet">
 	
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+        
+        <script src="{{ url_for('static', filename='categories.js') }}"></script>
+        <script src="{{ url_for('static', filename='spending.js') }}"></script>
+        <script src="{{ url_for('static', filename='start.js') }}"></script>
     </head>
     <body>
         <div class="wrapper">
-            <categories :categories="categories">
+            <app>
         </div>
-        <script src="{{ url_for('static', filename=jsfilename) }}"></script>
     </body>
 </html>
 

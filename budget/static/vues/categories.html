@@ -1,19 +1,12 @@
-<div id="Categories">
-    <div class="header">
-	<h1>Budget</h1>
-    </div>
-    <div class="content">
-        <div class="form">
-            <div class="category" v-for="category in categories">
-                <div class="toprow">
-		    <div class="name">{{ category.name }}</div>
-		</div>
-		<div class="bottomrow">
-		  <div class="amount">${{ category.amount.toFixed(2) }}</div>
-		  <div>-</div>
-		  <div class="spending">${{ category.total_spending.toFixed(2) }}</div>
-		</div>
-            </div>
+<div class="form">
+    <div class="category" v-for="category in categories">
+        <div class="toprow">
+            <div class="name">{{ category.name }}</div>
+        </div>
+        <div class="bottomrow">
+            <div class="amount">${{ category.amount.toFixed(2) }}</div>
+            <div>-</div>
+            <div class="spending">${{ category.total_spending.toFixed(2) }}</div>
         </div>
     </div>
 </div>

@@ -29,6 +29,42 @@ h1 {
     display: flex;
     padding-top: 80px;
     overflow: auto;
+    flex-direction: column;
+}
+
+.reciept {
+    margin: 10px;
+}
+
+.reciept .inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.reciept .inputs input,
+.reciept .inputs select,
+.reciept .inputs button {
+    margin: 5px;
+    font-size: 20px;
+    border: 1px solid #b5b5b5;;
+}
+
+.reciept .inputs select {
+    background-color: white;
+}
+
+.reciept .inputs button {
+    background-color: #ff7de5;
+    color: white;
+    border: none;
+    border-bottom: 3px solid #80808045;
+    outline: none;
+    transition: border 100ms, margin 100ms;
+}
+
+.reciept .inputs button:active {
+    margin-top: 8px;
+    border-bottom-width: 0;
 }
 
 .content .form {
