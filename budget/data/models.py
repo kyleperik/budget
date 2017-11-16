@@ -35,7 +35,7 @@ class Spending(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     budget_categoryid = db.Column(db.Integer,
                                   db.ForeignKey('budget_category.id'))
-    amount = db.Column(db.Float)
+    amount = db.Column(db.Numeric)
     description = db.Column(db.String(300))
     day_of_month = db.Column(db.Integer)
 

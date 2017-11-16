@@ -1,12 +1,14 @@
 <div class="reciept">
     <h2>Add Reciept</h2>
     <div class="inputs">
-        <input class="amount" type="number" min="0" step="any"
+        <span>
+            $<input class="amount" type="number" min="0" step="any"
                v-model="amount" placeholder="Amount" />
+        </span>
         <input class="description" type="text"
                v-model="description" placeholder="Description" />
         <select v-model="budget_categoryid">
-            <option value="" disabled="disabled">Budget</option>
+            <option value="" disabled hidden>Budget</option>
             <option v-for="budget in budgets" :value="budget.id">
                 {{ budget.name }}
             </option>

@@ -13,3 +13,13 @@ def save(spending):
     id = s.id
     db.session.commit()
     return id
+
+def get():
+    spending = (db.session.query(Spending).all())
+    return [dm.Spending(
+        id = s.id,
+        description = s.description,
+        amount = s.amount,
+        day_of_month = s.day_of_month,
+        budget_categoryid = s.budget_categoryid,
+    ) for s in spending]

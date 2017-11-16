@@ -33,7 +33,10 @@ h1 {
 }
 
 .reciept {
-    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
 }
 
 .reciept .inputs {
@@ -41,28 +44,34 @@ h1 {
     flex-direction: column;
 }
 
-.reciept .inputs input,
-.reciept .inputs select,
-.reciept .inputs button {
+.reciept input[type="number"] {
+    text-align: right;
+}
+
+.reciept input,
+.reciept select {
     margin: 5px;
     font-size: 20px;
-    border: 1px solid #b5b5b5;;
-}
-
-.reciept .inputs select {
     background-color: white;
+    border: 1px solid #b5b5b5;
 }
 
-.reciept .inputs button {
+.reciept .inputs select:invalid {
+    color: grey;
+}
+
+button {
     background-color: #ff7de5;
     color: white;
     border: none;
     border-bottom: 3px solid #80808045;
     outline: none;
+    margin: 5px;
+    font-size: 20px;
     transition: border 100ms, margin 100ms;
 }
 
-.reciept .inputs button:active {
+button:active {
     margin-top: 8px;
     border-bottom-width: 0;
 }

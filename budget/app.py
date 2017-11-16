@@ -37,3 +37,8 @@ def spending():
         day_of_month = r['day_of_month']
     )
     return str(data.spending.save(s))
+
+@app.route('/spending', methods=['GET'])
+def get_spending():
+    spending = data.spending.get()
+    return jsonify([s.serialize() for s in spending])
