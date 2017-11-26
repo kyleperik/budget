@@ -1,20 +1,31 @@
 <div class="reciept">
     <h2>Add Reciept</h2>
     <div class="inputs">
-        <span>
-            $<input class="amount" type="number" min="0" step="any"
-               v-model="amount" placeholder="Amount" />
+        <span class="amount">
+        	<span class="dollar">$</span>
+            <input class="amount" type="number" min="0" step="any"
+               v-model="amount" />
         </span>
-        <input class="description" type="text"
-               v-model="description" placeholder="Description" />
         <select v-model="budget_categoryid">
             <option value="" disabled hidden>Budget</option>
             <option v-for="budget in budgets" :value="budget.id">
                 {{ budget.name }}
             </option>
         </select>
+        <input class="description" type="text" size="1"
+               v-model="description" placeholder="Description" />
         <input type="number" v-model="day_of_month"
                placeholder="Day of Month">
-        <button @click="add">add!</button>
+        <button class="add" @click="add">add!</button>
+    </div>
+    <div class="history">
+    	<div class="day" v-for="(g, d) in groupedSpending">
+			<div class="time">{{ time(d) }}</div>
+			<div class="entry" v-for="s in g">
+				<div class="amount">${{ s.amount }}</div>
+				<div class="description">{{ s.description }}</div>
+				<div class="budget">{{ budgets.filter(x => x.id === s.budget_categoryid)[0].name }}</div>
+			</div>
+		</div>
     </div>
 </div>

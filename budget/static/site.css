@@ -12,6 +12,22 @@ h1 {
     -webkit-margin-after: 0;
 }
 
+/* don't show those arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input {
+    border: none;
+    background-color: transparent;
+}
+
+input, select {
+    outline-color: #3cff98;
+}
+
 .header {
     border-bottom-width: 2px;
     border-bottom-style: solid;
@@ -36,43 +52,81 @@ h1 {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
 }
 
 .reciept .inputs {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
 }
 
-.reciept input[type="number"] {
-    text-align: right;
+
+.reciept .inputs > *:not(button) {
+    margin: 5px;
+    background-color: white;
+    border: 1px solid #dadada;
+    height: 40px;
+}
+
+.reciept .inputs > * {
+    border-radius: 2px;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 200px;
+    max-width: 300px;
 }
 
 .reciept input,
 .reciept select {
-    margin: 5px;
     font-size: 20px;
-    background-color: white;
-    border: 1px solid #b5b5b5;
+    padding-left: 5px;
 }
 
-.reciept .inputs select:invalid {
-    color: grey;
+.reciept .amount {
+    position: relative;
+    height: 40px;
+    margin: 5px;
+}
+
+.reciept .amount input {
+    margin: 0;
+    padding: 0;
+    padding-left: 40px;
+    padding-right: 5px;
+    width: 100%;
+}
+
+.reciept .dollar {
+    font-size: 20px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    z-index: 5;
+    color: gray;
 }
 
 button {
     background-color: #ff7de5;
     color: white;
     border: none;
-    border-bottom: 3px solid #80808045;
+    border-bottom: 5px solid #8080804a;
     outline: none;
     margin: 5px;
+    padding: 5px;
     font-size: 20px;
     transition: border 100ms, margin 100ms;
+    box-sizing: border-box;
 }
 
 button:active {
-    margin-top: 8px;
+    margin-top: 10px;
     border-bottom-width: 0;
 }
 
@@ -120,4 +174,45 @@ button:active {
     background-color: #00ff79;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.history {
+    width: 100%;
+}
+
+.history h2 {
+    text-align: center;
+}
+
+.history .entry {
+    display: flex;
+    align-items: stretch;
+    margin: 5px;
+    align-items: center;
+}
+
+.history .entry > * {
+    margin: 2px 10px;
+}
+
+.history .entry .amount {
+    text-align: right;
+    font-size: 18px;
+    width: 75px;
+}
+.history .entry .description {
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.history .entry .budget {
+    font-size: 20px;
+}
+
+.history .entry .time {
+    font-size: 13px;
+    color: grey;
+    margin: 0;
+    width: 50px;
 }
