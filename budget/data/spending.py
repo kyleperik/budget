@@ -14,8 +14,16 @@ def save(spending):
     db.session.commit()
     return id
 
-def get():
-    spending = (db.session.query(Spending).all())
+def get(day=None, days=None):
+    initialQuery = db.session.query(Spending)
+    spending = (
+        initialQuery.filter(
+            Spending.day_of_month > day - days,
+            Spending.day_of_month <= day
+        )
+        if day != None
+        else initialQuery
+    ).all()
     return [dm.Spending(
         id = s.id,
         description = s.description,

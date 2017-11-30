@@ -31,7 +31,7 @@ class Spending:
     def serialize(self):
         return {
             'id': self.id,
-            'amount': str(self.amount),
+            'amount': f'{self.amount:.2f}',
             'description': self.description,
             'day_of_month': self.day_of_month,
             'budget_categoryid': self.budget_categoryid,

@@ -2,7 +2,7 @@
     <h2>Add Reciept</h2>
     <div class="inputs">
         <span class="amount">
-        	<span class="dollar">$</span>
+            <span class="dollar">$</span>
             <input class="amount" type="number" min="0" step="any"
                v-model="amount" />
         </span>
@@ -19,13 +19,22 @@
         <button class="add" @click="add">add!</button>
     </div>
     <div class="history">
-    	<div class="day" v-for="(g, d) in groupedSpending">
-			<div class="time">{{ time(d) }}</div>
-			<div class="entry" v-for="s in g">
-				<div class="amount">${{ s.amount }}</div>
-				<div class="description">{{ s.description }}</div>
-				<div class="budget">{{ budgets.filter(x => x.id === s.budget_categoryid)[0].name }}</div>
-			</div>
-		</div>
+        <div class="day" v-for="g in groupedSpending">
+            <div class="time">
+                <div class="ago">{{ time(g.day) }}</div>
+                <div class="date">{{ ordinal(g.day) }}</div>
+            </div>
+            <div class="entry" v-for="s in g.spending">
+                <div class="budget">
+                    {{ budgets.filter(x => x.id === s.budget_categoryid)[0].name }}
+                </div>
+                <div class="amount">${{ s.amount }}</div>
+                <div class="description">{{ s.description }}</div>
+            </div>
+        </div>
     </div>
+    <span class="daysLoaded">
+        Showing reciepts since {{ days_loaded }} days ago
+        <div><button @click="load(10)">load more</button></div>
+    </span>
 </div>

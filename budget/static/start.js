@@ -13,6 +13,13 @@ vue_utils.push_component('app', {
     },
 });
 
+Array.prototype.groupBy = function(key) {
+    return this.reduce(function(rv, x) {
+        (rv[x[key]] = rv[x[key]] || []).push(x);
+        return rv;
+    }, {});
+};
+
 function start () {
     new Vue({ el: '.wrapper' });
 }
