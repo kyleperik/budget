@@ -30,6 +30,14 @@ def budgets():
     categories = data.budget_category.get_for(1)
     return jsonify([c.serialize() for c in categories])
 
+@app.route('/budget/', methods=['POST'])
+def add_budget():
+    budget = request.json
+    return str(data.budget_category.add(
+        name = budget['name'],
+        amount = budget['amount'],
+        timeperiodid = budget['timeperiodid']
+    ))
 
 @app.route('/spending/', methods=['POST'])
 def spending():

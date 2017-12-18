@@ -14,11 +14,14 @@ def get_for(timeperiodid):
         spending = (s.amount for s in category.spending),
     ) for category in categories]
 
-
-
-
-
-
-
-
-
+def add(name, amount, timeperiodid):
+    category = BudgetCategory(
+        name = name,
+        amount = amount,
+        timeperiodid = timeperiodid
+    )
+    db.session.add(category)
+    db.session.flush()
+    categoryid = category.id
+    db.session.commit()
+    return categoryid

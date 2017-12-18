@@ -46,6 +46,21 @@ button:active {
     border-bottom-width: 0;
 }
 
+.dialog {
+    position: fixed;
+    top: 0; right: 0; left: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 130, 255, 0.28);
+    z-index: 100;
+}
+
+.dialog .innerdialog {
+    background-color: white;
+    padding: 10px;
+}
+
 .header {
     border-bottom-width: 2px;
     border-bottom-style: solid;
@@ -183,6 +198,31 @@ button:active {
     background-color: #00ff79;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.categories .actions {
+    display: flex;
+    justify-content: center;
+}
+
+.edit_budget .innerdialog {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit_budget .budget {
+    font-weight: bold;
+    font-size: 25px;
+    margin: 3px;
+}
+
+.edit_budget .amount {
+    font-size: 25px;
+    margin: 3px;
+}
+
+.edit_budget .add {
+    font-size: 16px;
 }
 
 .history {

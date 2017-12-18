@@ -5,12 +5,17 @@ vue_utils.push_component('app', {
         }
     },
     created: function () {
-        fetch('budget/')
-        .then(r => r.json())
-        .then(budgets => {
-            this.budgets = budgets;
-        });
+        this.load();
     },
+    methods: {
+        load: function () {
+            fetch('budget/')
+            .then(r => r.json())
+            .then(budgets => {
+                this.budgets = budgets;
+            });
+        }
+    }
 });
 
 Array.prototype.groupBy = function(key) {

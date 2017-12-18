@@ -4,6 +4,6 @@
     </div>
     <div class="content">
         <spending :budgets="budgets"/>
-        <categories :categories="budgets"/>
+        <categories :categories="budgets" @load="load" />
     </div>
 </div>
