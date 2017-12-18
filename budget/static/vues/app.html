@@ -3,7 +3,7 @@
         <h1>Budget</h1>
     </div>
     <div class="content">
-        <spending :budgets="budgets"/>
+        <spending :budgets="budgets" @load="load"/>
         <categories :categories="budgets" @load="load" />
     </div>
 </div>

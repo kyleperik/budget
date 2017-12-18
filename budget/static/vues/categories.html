@@ -1,7 +1,7 @@
 <div class="categories">
-    <div class="dialog edit_budget" v-if="edit_budget">
-        <div class="innerdialog">
-            <input class="budget" type="text" 
+    <div class="dialog edit_budget" v-if="edit_budget" @click="exit_edit">
+        <div class="innerdialog" ref="edit_dialog">
+            <input class="budget" type="text" ref="edit_focus"
                    v-model="edit_budget.name" placeholder="budget">
             <input class="amount" type="text"
                    v-model="edit_budget.amount" placeholder="amount">

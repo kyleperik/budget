@@ -6,7 +6,7 @@ vue_utils.push_component('spending', {
     data: function () {
         return {
             budget_categoryid: '',
-            amount: 0,
+            amount: null,
             description: '',
             day_of_month: new Date().getDate(),
             spending: [],
@@ -62,9 +62,10 @@ vue_utils.push_component('spending', {
             })
             .then(() => {
                 this.budget_categoryid = '';
-                this.amount = 0;
+                this.amount = null;
                 this.description = '';
                 this.spending.unshift(data);
+                this.$emit('load');
             });
         }
     }

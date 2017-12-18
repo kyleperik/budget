@@ -11,6 +11,12 @@ vue_utils.push_component('categories', {
                 name: null,
                 amount: null,
             };
+            this.$nextTick(() => this.$refs.edit_focus.focus())
+        },
+        exit_edit: function (e) {
+            if (!this.$refs.edit_dialog.contains(e.target)) {
+                this.edit_budget = null;
+            }
         },
         confirm_add: function () {
             var data = {
