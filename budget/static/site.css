@@ -5,9 +5,12 @@ body {
 }
 
 h1 {
-    font-family: 'Titillium Web', sans-serif;
     font-weight: normal;
-    font-size: 30px;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    font-family: 'Titillium Web', sans-serif;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
 }
@@ -46,6 +49,12 @@ button:active {
     border-bottom-width: 0;
 }
 
+.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .dialog {
     position: fixed;
     top: 0; right: 0; left: 0; bottom: 0;
@@ -71,10 +80,29 @@ button:active {
     left: 0;
     right: 0;
     z-index: 50;
+    display: flex;
 }
 .header h1 {
     padding: 20px 30px;
     padding-top: 10;
+}
+.header .period {
+    margin-left: auto;
+    font-size: 20px;
+    color: #3a3a3a;
+    display: flex;
+    align-items: stretch;
+    padding: 5px;
+}
+.header .period .arrow {
+    cursor: pointer;
+    padding: 10px;
+    font-weight: bold;
+}
+.header .period .date,
+.header .period .arrow {
+    display: flex;
+    align-items: center;
 }
 
 .content {
@@ -85,7 +113,6 @@ button:active {
 }
 
 .reciept {
-    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -161,7 +188,7 @@ button:active {
 }
 .category {
     margin: 20px 5px;
-    min-width: 300px;
+    /* min-width: 300px; */
     flex-grow: 1;
 }
 .category .toprow {
@@ -232,15 +259,16 @@ button:active {
 
 .history .entry {
     display: flex;
-    align-items: stretch;
-    margin: 5px;
+    /* margin: 5px; */
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .history .time {
     font-size: 13px;
     color: grey;
     display: flex;
+    margin: 0 5px;
 }
 
 .history .time .ago {
@@ -249,13 +277,12 @@ button:active {
 
 
 .history .entry > * {
-    margin: 2px 10px;
-    font-size: 20px;
+    margin: 0 10px;
+    font-size: 18px;
     flex-shrink: 0;
 }
 
 .history .entry .budget {
-    font-size: 20px;
     font-weight: bold;
 }
 

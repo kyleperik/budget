@@ -1,19 +1,29 @@
 vue_utils.push_component('spending', {
-    props: ['budgets'],
+    props: ['budgets', 'timeperiod'],
     created: function () {
         this.load(5);
     },
     data: function () {
-        return {
+        var data = {
             budget_categoryid: '',
             amount: null,
             description: '',
-            day_of_month: new Date().getDate(),
-            spending: [],
-            days_loaded: 0,
+            all_days_loaded: {},
+            all_spending: {},
+            today: new Date(),
         };
+        return data;
     },
     computed: {
+        is_this_period: function () {
+            return (
+                this.timeperiod.month == this.today.getMonth() + 1 &&
+                this.timeperiod.year == this.today.getFullYear()
+            )
+        },
+        day_of_month: function () {
+            return this.today.getDate();
+        },
         groupedSpending: function () {
             if (!this.spending) return [];
             return this.spending.reduce((r, s) => {
@@ -26,15 +36,46 @@ vue_utils.push_component('spending', {
             }, []).sort(
                 (a, b) => b.day - a.day
             );
+        },
+        spending: function () {
+            return this.all_spending[this.timeperiod.id];
+        },
+        days_loaded: function () {
+            return this.all_days_loaded[this.timeperiod.id];
+        },
+        all_loaded: function () {
+            return this.days_loaded >= moment(new Date(
+                this.timeperiod.year,
+                this.timeperiod.month - 1
+            )).daysInMonth();
+        }
+    },
+    watch: {
+        timeperiod: function () {
+            if (!this.all_days_loaded[this.timeperiod.id]) this.load(5)
         }
     },
     methods: {
         load: function (days_to_load) {
-            fetch(`spending/${this.days_loaded}-${this.days_loaded + days_to_load}`)
+            Vue.set(
+                this.all_days_loaded,
+                this.timeperiod.id,
+                this.all_days_loaded[this.timeperiod.id] || 0
+            );
+            var loaded = this.all_days_loaded[this.timeperiod.id];
+            var tp = this.timeperiod.id;
+            fetch(`spending/${tp}/${loaded}-${loaded + days_to_load}`)
             .then(r => r.json())
             .then(s => {
-                this.spending = this.spending.concat(s);
-                this.days_loaded += days_to_load
+                Vue.set(
+                    this.all_spending,
+                    this.timeperiod.id,
+                    (this.all_spending[
+                        this.timeperiod.id
+                    ] || []).concat(s)
+                );
+                this.all_days_loaded[this.timeperiod.id] += days_to_load;
+                if (s.length === 0 && !this.all_loaded) this.load(days_to_load);
             });
         },
         ordinal: moment.localeData().ordinal,
@@ -49,6 +90,7 @@ vue_utils.push_component('spending', {
             }
         },
         add: function () {
+            if (!this.budget_categoryid || !this.amount || !this.day_of_month) return;
             var data = {
                 budget_categoryid: this.budget_categoryid,
                 amount: parseInt(this.amount).toFixed(2),

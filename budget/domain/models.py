@@ -36,3 +36,16 @@ class Spending:
             'day_of_month': self.day_of_month,
             'budget_categoryid': self.budget_categoryid,
         }
+
+class Timeperiod():
+    def __init__(self, id=None, month=None, year=None):
+        self.id = id
+        self.month = month
+        self.year = year
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'month': self.month,
+            'year': self.year,
+        }

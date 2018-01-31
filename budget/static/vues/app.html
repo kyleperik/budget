@@ -1,9 +1,38 @@
 <div>
     <div class="header">
         <h1>Budget</h1>
+        <div class="period">
+            <span 
+                class="arrow" 
+                v-if="!isfirstperiod"
+                @click="moveperiod(-1)"
+            >◂</span>
+            <span class="date">{{ timeperiod_date }}</span>
+            <span
+                class="arrow"
+                v-if="!islastperiod"
+                @click="moveperiod(1)"
+            >▸</span>
+            <span
+                class="arrow"
+                v-else
+                @click="addperiod"
+            >+</span>
+        </div>
     </div>
     <div class="content">
-        <spending :budgets="budgets" @load="load"/>
-        <categories :categories="budgets" @load="load" />
+        <div v-if="timeperiod">
+            <spending
+                :budgets="budgets"
+                :timeperiod="timeperiod"
+                @load="load"
+            />
+            <categories
+                :categories="budgets"
+                :timeperiod="timeperiod"
+                @load="load"
+            />
+        </div>
+        <div v-else class="placeholder">Loading...</div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 vue_utils.push_component('categories', {
-    props: ['categories'],
+    props: ['categories', 'timeperiod'],
     data: function () {
         return {
             edit_budget: null
@@ -14,7 +14,7 @@ vue_utils.push_component('categories', {
             this.$nextTick(() => this.$refs.edit_focus.focus())
         },
         exit_edit: function (e) {
-            if (!this.$refs.edit_dialog.contains(e.target)) {
+            if (!this.$refs.edit_dialog || !this.$refs.edit_dialog.contains(e.target)) {
                 this.edit_budget = null;
             }
         },
@@ -22,7 +22,7 @@ vue_utils.push_component('categories', {
             var data = {
                 name: this.edit_budget.name,
                 amount: this.edit_budget.amount,
-                timeperiodid: 1,
+                timeperiodid: this.timeperiod.id,
             };
             this.edit_budget = null;
             fetch('budget/', {

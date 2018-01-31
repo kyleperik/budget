@@ -1,4 +1,4 @@
-from .models import Spending, db
+from .models import Spending, BudgetCategory, db
 import budget.domain.models as dm
 
 def save(spending):
@@ -14,8 +14,10 @@ def save(spending):
     db.session.commit()
     return id
 
-def get(day=None, days=None):
-    initialQuery = db.session.query(Spending)
+def get(timeperiodid=None, day=None, days=None):
+    initialQuery = db.session.query(Spending).join(BudgetCategory).filter(
+        BudgetCategory.timeperiodid == timeperiodid
+    )
     spending = (
         initialQuery.filter(
             Spending.day_of_month > day - days,

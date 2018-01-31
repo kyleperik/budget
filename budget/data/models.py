@@ -8,7 +8,7 @@ class Timeperiod(db.Model):
     month = db.Column(db.Integer)
     year = db.Column(db.Integer) 
 
-    def __init__(self, id, month, year):
+    def __init__(self, id=None, month=None, year=None):
         self.id = id
         self.month = month
         self.year = year
@@ -24,7 +24,7 @@ class BudgetCategory(db.Model):
     spending = db.relationship('Spending')
     timeperiod = db.relationship('Timeperiod')
 
-    def __init(self, id, name, amount, timeperiodid):
+    def __init(self, id=None, name=None, amount=None, timeperiodid=None):
         self.id = id
         self.name = name
         self.amount = amount

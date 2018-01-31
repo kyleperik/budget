@@ -1,6 +1,6 @@
 <div class="reciept">
-    <h2>Add Reciept</h2>
-    <div class="inputs">
+    <h2>Spending</h2>
+    <div class="inputs" v-if="is_this_period">
         <span class="amount">
             <span class="dollar">$</span>
             <input class="amount" type="number" min="0" step="any"
@@ -25,16 +25,16 @@
                 <div class="date">{{ ordinal(g.day) }}</div>
             </div>
             <div class="entry" v-for="s in g.spending">
+                <div class="amount">${{ s.amount }}</div>
                 <div class="budget">
                     {{ budgets.filter(x => x.id === s.budget_categoryid)[0].name }}
                 </div>
-                <div class="amount">${{ s.amount }}</div>
                 <div class="description">{{ s.description }}</div>
             </div>
         </div>
     </div>
     <span class="daysLoaded">
-        Showing reciepts since {{ days_loaded }} days ago
-        <div><button @click="load(10)">load more</button></div>
+        <button v-if="!all_loaded" @click="load(10)">load more</button>
+        <div v-else>that's all</div>
     </span>
 </div>
