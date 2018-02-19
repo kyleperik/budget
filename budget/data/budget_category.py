@@ -25,3 +25,11 @@ def add(name, amount, timeperiodid):
     categoryid = category.id
     db.session.commit()
     return categoryid
+
+def delete(id):
+    category = (
+        db.session.query(BudgetCategory)
+        .filter(BudgetCategory.id == id)
+    ).first()
+    db.session.remove(category)
+    return db.session.commit()

@@ -24,12 +24,19 @@
                 <div class="ago">{{ time(g.day) }}</div>
                 <div class="date">{{ ordinal(g.day) }}</div>
             </div>
-            <div class="entry" v-for="s in g.spending">
+            <div
+                class="entry" v-for="s in g.spending"
+                @mouseover="hovered_id = s.id"
+                @mouseleave="hovered_id = null"
+            >
                 <div class="amount">${{ s.amount }}</div>
                 <div class="budget">
                     {{ budgets.filter(x => x.id === s.budget_categoryid)[0].name }}
                 </div>
                 <div class="description">{{ s.description }}</div>
+                <div @click="del(s)" v-if="hovered_id === s.id">
+                    <svgimg class="icon delete_spending" url="entypo/cross.svg" />
+                </div>
             </div>
         </div>
     </div>

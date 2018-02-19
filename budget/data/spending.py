@@ -33,3 +33,10 @@ def get(timeperiodid=None, day=None, days=None):
         day_of_month = s.day_of_month,
         budget_categoryid = s.budget_categoryid,
     ) for s in spending]
+
+def delete(id):
+    spending = (
+        db.session.query(Spending)
+        .filter(Spending.id == id)
+    ).delete()
+    db.session.commit()

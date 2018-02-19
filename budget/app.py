@@ -40,6 +40,10 @@ def add_budget():
         timeperiodid = budget['timeperiodid']
     ))
 
+@app.route('/budget/<int:id>', methods=['DELETE'])
+def del_budget(id):
+    return data.budget_category.delete(id)
+
 @app.route('/spending/', methods=['POST'])
 def spending():
     r = request.json
@@ -79,3 +83,8 @@ def get_spending(timeperiodid=None, day_range=None):
     spending = data.spending.get(timeperiodid=timeperiodid, day=day, days=days)
     return jsonify([s.serialize() for s in spending])
 
+
+@app.route('/spending/<int:id>', methods=['DELETE'])
+def del_spending(id):
+    data.spending.delete(id)
+    return ('', 204)

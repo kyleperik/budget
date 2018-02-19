@@ -11,6 +11,7 @@ vue_utils.push_component('spending', {
             all_days_loaded: {},
             all_spending: {},
             today: new Date(),
+            hovered_id: null,
         };
         return data;
     },
@@ -102,12 +103,28 @@ vue_utils.push_component('spending', {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             })
-            .then(() => {
+            .then(x => x.json())
+            .then(id => {
                 this.budget_categoryid = '';
                 this.amount = null;
                 this.description = '';
+                data.id = id;
                 this.spending.unshift(data);
                 this.$emit('load');
+            });
+        },
+        del: function (s) {
+            fetch(`spending/${s.id}`, {
+                method: 'DELETE',
+            })
+            .then(r => {
+                this.all_spending[
+                    this.timeperiod.id
+                ] = this.all_spending[
+                    this.timeperiod.id
+                ].filter(
+                    x => x.id !== s.id
+                );
             });
         }
     }

@@ -5,15 +5,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
         <script src="https://cdn.rawgit.com/kyleperik/7db540178c088fe725ef3399766e126d/raw/880a39ab9e04ffbd02e272f95475570ae0100c0d/vue_utils.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/site.css') }}">
 	<link href="https://fonts.googleapis.com/css?family=Lobster|Quicksand|Titillium+Web" rel="stylesheet">
 	
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-        
-        <script src="{{ url_for('static', filename='categories.js') }}"></script>
-        <script src="{{ url_for('static', filename='spending.js') }}"></script>
-        <script src="{{ url_for('static', filename='start.js') }}"></script>
+        <script>
+         var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+        </script>
+        <script src="{{ url_for('static', filename='js/categories.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/spending.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/start.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/svgimg.js') }}"></script>
     </head>
     <body>
         <div class="wrapper">

@@ -49,6 +49,11 @@ button:active {
     border-bottom-width: 0;
 }
 
+.icon {
+    width: 16px;
+    height: 16px;
+}
+
 .placeholder {
     display: flex;
     align-items: center;
@@ -259,9 +264,7 @@ button:active {
 
 .history .entry {
     display: flex;
-    /* margin: 5px; */
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .history .time {
@@ -297,6 +300,13 @@ button:active {
     flex-grow: 1;
     text-align: right;
     flex-shrink: 1;
+    text-overflow:  ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.history .entry .delete_spending {
+    cursor: pointer;
 }
 
 .reciept .daysLoaded,
