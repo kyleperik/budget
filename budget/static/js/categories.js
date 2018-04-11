@@ -5,6 +5,17 @@ vue_utils.push_component('categories', {
             edit_budget: null
         }
     },
+    computed: {
+        budget_data: function () {
+            return  {
+                labels: this.categories.map(c => c.name),
+                datasets: [{
+                    backgroundColor: ['#ff8888', '#8888ff', '#ffddaa', '#aaffaa', '#ffccaa'],
+                    data: this.categories.map(c => c.amount)
+                }]
+            }
+        }
+    },
     methods: {
         add: function () {
             this.edit_budget = {

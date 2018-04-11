@@ -7,12 +7,12 @@ def get_for(timeperiodid):
                   .filter(
                       BudgetCategory.timeperiodid == timeperiodid
                   )).all()
-    return [dm.BudgetCategory(
+    return sorted([dm.BudgetCategory(
         id = category.id,
         name = category.name,
         amount = category.amount,
         spending = (s.amount for s in category.spending),
-    ) for category in categories]
+    ) for category in categories], key=lambda x: x.amount)
 
 def add(name, amount, timeperiodid):
     category = BudgetCategory(

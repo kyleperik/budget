@@ -42,6 +42,7 @@
     </div>
     <span class="daysLoaded">
         <button v-if="!all_loaded" @click="load(10)">load more</button>
+        <div v-else-if="spending.length == 0">no spending</div>
         <div v-else>that's all</div>
     </span>
 </div>
